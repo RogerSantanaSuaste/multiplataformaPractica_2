@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/formulario.css">
+    <title>Formulario</title>
+</head>
+
+<body>
+    <div class="container">
+        <form name="form1" onsubmit="return validateForm()" class="m-5">
+            <h1>Validación de formulario</h1>
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId"
+                    placeholder="" required />
+                <small id="helpId" class="form-text text-muted">Escriba su nombre.</small>
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Correo</label>
+                <input type="email" class="form-control" name="correo" id="correo" aria-describedby="emailHelpId"
+                    placeholder="matricula@utcancun.edu.mx" required />
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label">Edad</label>
+                <input type="number" class="form-control" name="birth" id="birth" aria-describedby="helpId"
+                    placeholder="" required/>
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="validateForm()">
+                Enviar
+            </button>
+
+            <div id="status" class="m-1"></div>
+        </form>
+    </div>
+    <script>
+        //function validateForm() {
+            // Obtener el contenido del formulario usando los ids
+
+            // Validación
+            //let statusText;
+            
+
+        //}
+
+        const form = document.querySelector('form');
+
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); // prevent form from submitting
+
+            // validate the form
+            let fecha = document.forms["form1"]["birth"].value;
+            if (fecha < 18) {
+                statusText = "Es menor de edad, no se le puede permitir el registro.";
+            } else {
+                statusText = "Datos recibidos correctamente";
+            }
+            document.getElementById("status").innerHTML = statusText;
+
+        });
+    </script>
+</body>
+
+</html>
