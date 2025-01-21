@@ -17,6 +17,11 @@
                 <label for="" class="form-label">Correo</label>
                 <input type="email" class="form-control" name="correo" id="correo" aria-describedby="emailHelpId"
                     placeholder="matricula@utcancun.edu.mx" />
+                <div class="mb-3">
+                    <label for="" class="form-label">Contraseña</label>
+                    <input type="password" class="form-control" name="pass" id="pass" placeholder="" />
+                </div>
+
             </div>
             <button type="submit" class="btn btn-primary" onclick="validateForm()">
                 Enviar
@@ -33,9 +38,10 @@
 
             // validate the form
             let email = document.forms["form1"]["correo"].value;
-            if (!isNaN(email)) {
-                statusText = "Por favor ingrese su correo correctamente";
-            } else {
+            let password = document.forms["form1"]["pass"].value;
+            if (email=="" || password=="") {
+                statusText = "Datos incompletos por favor rellene ambos campos.";
+            } else{
                 statusText = "Datos recibidos correctamente";
             }
             document.getElementById("status").innerHTML = statusText;
