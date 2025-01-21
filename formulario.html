@@ -14,20 +14,9 @@
         <form name="form1" onsubmit="return validateForm()" class="m-5">
             <h1>Validación de formulario</h1>
             <div class="mb-3">
-                <label for="nombre" class="form-label">Nombre</label>
-                <input type="text" class="form-control" name="nombre" id="nombre" aria-describedby="helpId"
-                    placeholder="" required />
-                <small id="helpId" class="form-text text-muted">Escriba su nombre.</small>
-            </div>
-            <div class="mb-3">
                 <label for="" class="form-label">Correo</label>
                 <input type="email" class="form-control" name="correo" id="correo" aria-describedby="emailHelpId"
-                    placeholder="matricula@utcancun.edu.mx" required />
-            </div>
-            <div class="mb-3">
-                <label for="" class="form-label">Edad</label>
-                <input type="number" class="form-control" name="birth" id="birth" aria-describedby="helpId"
-                    placeholder="" required/>
+                    placeholder="matricula@utcancun.edu.mx" />
             </div>
             <button type="submit" class="btn btn-primary" onclick="validateForm()">
                 Enviar
@@ -43,9 +32,9 @@
             event.preventDefault(); // prevent form from submitting
 
             // validate the form
-            let fecha = document.forms["form1"]["birth"].value;
-            if (fecha < 18) {
-                statusText = "Es menor de edad, no se le puede permitir el registro.";
+            let email = document.forms["form1"]["correo"].value;
+            if (!isNaN(email)) {
+                statusText = "Por favor ingrese su correo correctamente";
             } else {
                 statusText = "Datos recibidos correctamente";
             }
